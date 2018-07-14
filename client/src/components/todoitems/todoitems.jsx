@@ -11,7 +11,7 @@ class TodoItems extends Component {
     createTasks(item) {
         return <li key={item.key}>
                   <span>{item.text}</span>
-                  <button className="done" onClick={() => this.complete(item)}>Done</button>
+                  <button className="done" onClick={(e) => this.complete(e, item)}>Done</button>
                   <button className="trash" onClick={() => this.delete(item.key)}>Trash</button>
               </li>
     }
@@ -20,12 +20,13 @@ class TodoItems extends Component {
         this.props.delete(key);
       }
 
-      complete(item) {
+      complete(e, item) {
+        item.status = !item.status;
+        e.target.previousSibling.classList.toggle("striked");
         this.props.complete(item);
       }
 
       update(item) {
-        item.className = "strike";
         this.props.update(item);
       }
 

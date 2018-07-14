@@ -90,8 +90,15 @@ class TodoList extends Component {
          })
          .then(res => res.json())
          .then((item) => {
-         
-          console.log("Task completed");
+            const index = this.state.items.indexOf(item);
+
+            if (index !== -1) {
+              this.setState.items[index] = item;
+            }
+
+            console.log("Task completed");
+
+            console.log(this.state.items);
          });
        
       }
@@ -105,8 +112,14 @@ class TodoList extends Component {
          })
          .then(res => res.json())
          .then((item) => {
-         
-          console.log("Task updated");
+
+            const index = this.state.items.indexOf(item);
+
+            if (index !== -1) {
+              this.setState.items[index] = item;
+            }
+
+            console.log("Task updated");
          });
        
       }
